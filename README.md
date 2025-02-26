@@ -41,7 +41,7 @@ Note: in the following comments, `RxL` means `Rx(5:0)` and `RxH` means `Rx(11:6)
 * `MOVC6 Ra, Rb` &emsp;  // `PPR(23:12) := Ra(11:0)` -> get overall mantissa product <br>
 * `MOVC7 Ra, Rb` &emsp;  // `Ra(15:0) := sign || exp || normalized mantissa`, where `||` means "concatenate"
 
-**Subroutine using new instructions**
+**Subroutine using new instructions** <br>
 The following subroutine outputs the desired IEEE-754 formatted product correctly.
 
 * `0x00` `MOV Ra, #num_1` <br>
