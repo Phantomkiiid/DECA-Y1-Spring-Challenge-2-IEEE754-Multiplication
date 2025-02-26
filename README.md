@@ -8,7 +8,8 @@ This multiplication aims to directly yield the result of multiplication between 
 * Mantissa (also called "significand" or "fraction") `X(9:0)`
 <br>
 The following diagram shows how an IEEE-754 formatted number could be intepreted: <br>
-![image](https://github.com/user-attachments/assets/d0efe06e-8b40-4d1b-918c-ec3f29d66329)
+![floating_number_intepretation](https://github.com/user-attachments/assets/8e403b36-b68b-4344-9501-0cf677c41b06)
+
 
 
 
