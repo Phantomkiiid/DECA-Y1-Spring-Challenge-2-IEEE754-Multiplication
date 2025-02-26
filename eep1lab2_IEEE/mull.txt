@@ -1,0 +1,12 @@
+MOV R0, #12   
+MOV R2, #0  
+MOV R1, #5      
+JEQ 9  // OK because zero flag has not been set from MOV
+MOV R3, #1   
+AND R3, R0, R3  // AND
+CMP R3, #1  // set flag Z if R4 == 1
+JNE 2  // jump if flag Z != 0
+ADD R2, R2, R1  // sum += op2_shifted
+LSL R1, R1, #1
+LSR R0, R0, #1
+JMP -8  // return to loop
