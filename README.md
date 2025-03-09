@@ -14,7 +14,7 @@ The above diagram shows how can an IEEE-754 half precision floating number could
 * Step 1: calculate sign bit, which is `A(15) XOR B(15)`;
 * Step 2: calculate exponent, which is `A(14:10) + B(14:10) - 15(decimal)`, note that this could be done using **two's complement** (i.e. `+ 0b10001`);
 * Step 3: perform partial product calculation in mantissa, which is `A(9:0) * B(9:0)`, using a similar method comparing to Challenge 1, adding the hidden "1" at the MSB;
-* Step 4: check the decimal point in mantissa and adjust exponent (`exponent + 1`);
+* Step 4: check the decimal point in mantissa and adjust exponent (`exponent + 1` when the 3rd bits in calculated mantissa, counting from left, is '1');
 * Step 5: combine the sign bit, exponent bits and mantissa (**Most Significant** 10 bits **after truncating** the leading `001` in `Rm`) for output. <br>
 
 The Following figure shows the detailed process of dealing with mantissa calculation and normalization. <br>
