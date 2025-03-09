@@ -96,8 +96,9 @@ This combined hardware and software implementation is successful in processing I
 * If the number of full adders is not limited, it is possible to compress the overall subroutine - or to even make a single-instruction implementation. <br>
 
 However, it has the following limitations:
-* It could not yield an **exact** representation of the product due to bits limitations;
-* It uses multiple MUXes which could also be considered as increased hardware costs.
+* It could not yield an **exact** representation of the product (when both 'A' and 'B' have very complex mantissa) due to bits limitations;
+* It uses multiple MUXes which could also be considered as increased hardware costs;
+* It does not handle overflow, underflow and NaN numbers properly (i.e. it assumes the inputs could generate product that is in the range of numbers that half-precision IEEE-754 format could represent).
 
 
 
