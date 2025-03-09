@@ -93,7 +93,7 @@ This combined hardware and software implementation is successful in processing I
 * It uses a total of **40 full adders**, which is significantly lower than the limitation of 64 full adders.
 * It could be used to deal with **signed** IEEE-754 formatted numbers in half precision.
 * It takes a total of **10 clock cycles** to implement the full subroutine, which is considered fast.
-* If the number of full adders is not limited, it is possible to compress the overall subroutine - or to even make a single-instruction implementation.
+* If the number of full adders is not limited, it is possible to compress the overall subroutine - or to even make a single-instruction implementation. <br>
 However, it has the following limitations:
 * It could not yield an **exact** representation of the product due to bits limitations;
 * It uses multiple MUXes which could also be considered as increased hardware costs.
