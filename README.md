@@ -18,7 +18,7 @@ The above diagram shows how can an IEEE-754 half precision floating number could
 * Step 5: combine the sign bit, exponent bits and mantissa (**Most Significant** 10 bits **after truncating** the leading `001` in `Rm`) for output. <br>
 
 The Following figure shows the detailed process of dealing with mantissa calculation and normalization. <br>
-![image](https://github.com/user-attachments/assets/cb86cbda-191a-4f44-bbd4-a05100c53b1d)
+![image](https://github.com/user-attachments/assets/672a50d9-b4aa-4b8b-9251-4cf8516eea21)
 
 # New Hardware Included
 * `ADD667`, similar to what is included in Challenge 1, outputs the sum of two 6-bit numbers with carry bit being the MSB.
@@ -26,7 +26,7 @@ The Following figure shows the detailed process of dealing with mantissa calcula
 * `MUL6`, which gives a 12-bit multiplication result between two 6-bit numbers. It uses five `ADD667` so costs 30 full adders.
   ![image](https://github.com/user-attachments/assets/15c16e25-b0b4-4063-8340-5703492c3586)
 * `MLU`, short for `Multiplication Unit`, handles complex processing of numbers。 It uses two temporary 15-bit registers and one 24-bit `PPL` (short for `Partial Product Register`) to store mantissa, as well as two additional 5-bit adders (so 10 full adders used here).
-  ![image](https://github.com/user-attachments/assets/b43c8558-b3c5-46d5-8436-c3dd2c01db72)
+  ![image](https://github.com/user-attachments/assets/2f13150c-2977-4d08-af35-ac4e6dd8157a)
 * New Muxes and control signals are added to the `datapath` and `dpdecode` sheets for additional instructions.
   ![image](https://github.com/user-attachments/assets/e340e4f5-e4b0-4185-b134-6730ce42bec3)
 
@@ -94,6 +94,9 @@ This combined hardware and software implementation is successful in processing I
 * It could be used to deal with **signed** IEEE-754 formatted numbers in half precision.
 * It takes a total of **10 clock cycles** to implement the full subroutine, which is considered fast.
 * If the number of full adders is not limited, it is possible to compress the overall subroutine - or to even make a single-instruction implementation.
+However, it has the following limitations:
+* It could not yield an **exact** representation of the product due to bits limitations;
+* It uses multiple MUXes which could also be considered as increased hardware costs.
 
 
 
