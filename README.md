@@ -86,7 +86,8 @@ The two numbers in this example are `0xDBF7` and `0x3AA6` respectively (refer to
 ![image](https://github.com/user-attachments/assets/b8cd1b42-2a61-4fb4-b4c3-efbd91673003)
 * When putting into a calculator, `-254.875 * 0.8310546875 = -211.8150635`, leading to a difference of approximately 0.03%, which is considered accurate.
 * Issie waveform simulation yields the same correct result (`0xDA9E` at clock cycle 14 in `REG1`).
-![image](https://github.com/user-attachments/assets/a1a1293e-fdf8-46e1-938b-0420fd40850e)
+![image](https://github.com/user-attachments/assets/d7f10fad-10f2-4442-abe0-ad19ecbb1b01)
+
 
 
 # Evaluation
