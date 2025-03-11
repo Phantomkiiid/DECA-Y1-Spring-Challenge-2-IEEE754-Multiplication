@@ -15,7 +15,8 @@ The above diagram shows how can an IEEE-754 half precision floating number could
 * Step 2: calculate exponent, which is `A(14:10) + B(14:10) - 15(decimal)`, note that this could be done using **two's complement** (i.e. `+ 0b10001`);
 * Step 3: perform partial product calculation in mantissa, which is `A(9:0) * B(9:0)`, using a similar method comparing to Challenge 1, adding the hidden "1" at the MSB;
 * Step 4: check the decimal point in mantissa and adjust exponent (`exponent + 1` when the 3rd bits in calculated mantissa, counting from left, is '1');
-* Step 5: combine the sign bit, exponent bits and mantissa (**Most Significant** 10 bits **after truncating** the leading `001` in `Rm`) for output. <br>
+* Step 5: adjust the exponent by checking whether the resultant exponent **falls into the range** that the IEEE-754 format could support, and by checking the **position of the decimal point** in mantissa (a left-ward shift leads to addition of 1 in exponent), which can be proved by mathematics;
+* Step 6: combine the sign bit, exponent bits and mantissa (**Most Significant** 10 bits **after truncating** the leading `001` in `Rm`) for output. <br>
 
 The Following figure shows the detailed process of dealing with mantissa calculation and normalization. <br>
 ![image](https://github.com/user-attachments/assets/672a50d9-b4aa-4b8b-9251-4cf8516eea21)
@@ -25,8 +26,8 @@ The Following figure shows the detailed process of dealing with mantissa calcula
   ![image](https://github.com/user-attachments/assets/54e6b0bb-ea2a-4cf2-b13b-456ab86c4adb)
 * `MUL6`, which gives a 12-bit multiplication result between two 6-bit numbers. It uses five `ADD667` so costs 30 full adders.
   ![image](https://github.com/user-attachments/assets/15c16e25-b0b4-4063-8340-5703492c3586)
-* `MLU`, short for `Multiplication Unit`, handles complex processing of numbers。 It uses two temporary 15-bit registers and one 24-bit `PPL` (short for `Partial Product Register`) to store mantissa, as well as two additional 5-bit adders (so 10 full adders used here).
-  ![image](https://github.com/user-attachments/assets/2f13150c-2977-4d08-af35-ac4e6dd8157a)
+* `MLU`, short for `Multiplication Unit`, handles complex processing of numbers。 It uses two temporary 15-bit registers and one 24-bit `PPL` (short for `Partial Product Register`) to store mantissa, as well as two additional 5-bit adders (so 10 full adders used here). The additional adders and muxes control **the processing of exponents**.
+  ![image](https://github.com/user-attachments/assets/40e23f03-094e-4a77-8359-585c29003de7)
 * New Muxes and control signals are added to the `datapath` and `dpdecode` sheets for additional instructions.
   ![image](https://github.com/user-attachments/assets/e340e4f5-e4b0-4185-b134-6730ce42bec3)
 
